@@ -16,6 +16,11 @@
 }
 
 /* Typography */
+::selection {
+    background: var(--colour-primary);
+    color: white;
+}
+
 html {
     font-size: 62.5%;
 }
@@ -50,6 +55,7 @@ h2 {
 
 h3 {
     font-size: 3rem;
+    font-weight: 500;
 }
 
 p {
@@ -143,7 +149,6 @@ a {
 .list {
     list-style: none;
     padding-left: 0;
-    color: var(--colour-headings);
 }
 
 .list--inline .list__item {
@@ -154,6 +159,7 @@ a {
 .list--tick {
     list-style-image: url(../Images/tick.svg);
     padding-left: 3rem;
+    color: var(--colour-headings);
 }
 
 .list--tick .list__item {
@@ -169,6 +175,7 @@ a {
 
 /* Icons */
 
+
 .icon {
     width: 40px;
     height: 40px;
@@ -176,7 +183,7 @@ a {
 }
 
 .icon--primary {
-    fill: var(--colour-primary)
+    fill: var(--colour-primary);
 }
 
 .icon--white {
@@ -422,6 +429,7 @@ a {
 /* Media */
 .media {
     display: flex;
+    margin-bottom: 4rem;
 }
 
 .media__title {
@@ -611,22 +619,24 @@ collapsible--expanded
 }
 
 .block--dark {
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     color: #7b858b;
 }
 
-.block--dark .block__heading {
+.block--dark h1,
+.block--dark h2,
+.block--dark h3 {
     color: white;
 }
 
 .block--skewed-right {
     padding-bottom: calc(var(--padding-vertical) + 4rem);
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
 }
 
 .block--skewed-left {
     padding-bottom: calc(var(--padding-vertical) + 4rem);
-    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
 }
 
 /* Navigation Bar */
@@ -696,10 +706,6 @@ collapsible--expanded
 }
 
 /* Hero */
-
-.hero {
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-}
 
 .hero__tagline {
     font-size: 2rem;
@@ -784,5 +790,27 @@ collapsible--expanded
     .feature:nth-of-type(even) .feature__content {
         order: 2;
         /* By default, order is set to 1, this command only works in grids or flex */
+    }
+}
+
+/* Showcase Block */
+
+.block-showcase__image>img {
+    width: 100%;
+}
+
+@media screen and (min-width:768px) {
+    .block-showcase .grid {
+        grid-template-columns: 50% 50%;
+    }
+
+    .block-showcase__image {
+
+        justify-self: end;
+    }
+
+    .block-showcase__image>img {
+        width: auto;
+        max-width: 700px;
     }
 }
