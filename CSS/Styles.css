@@ -217,7 +217,7 @@ a {
     font-size: 1.8rem;
     font-weight: 600;
     margin: 1rem 0;
-    padding: 2rem 3rem;
+    padding: 2rem 4vw;
     text-transform: uppercase;
     white-space: nowrap;
     text-align: center;
@@ -310,6 +310,7 @@ a {
     border: 0;
     flex-grow: 1;
     padding: 1.5rem 2rem;
+    width: 0;
 }
 
 .input-group .btn {
@@ -567,7 +568,21 @@ a {
     text-align: center;
 }
 
-collapsible--expanded
+@media screen and (min-width: 768px) {
+    .callout .grid--1x2 {
+        grid-template-columns: 1fr auto;
+    }
+
+    .callout__content {
+        text-align: left;
+    }
+
+    .callout .btn {
+        justify-self: start;
+        margin: 0 2rem;
+    }
+}
+
 /* Collapsibles */
 
 .collapsible__header {
@@ -580,26 +595,24 @@ collapsible--expanded
     font-size: 3rem;
 }
 
-.collapsible .chevron {
-    height: 40px;
-    width: 40px;
+.collapsible__chevron {
     transform: rotate(-90deg);
-
+    transition: transform 0.3s;
 }
 
 .collapsible__content {
-    overflow: hidden;
     max-height: 0;
-    transition: all 0.3s;
+    overflow: hidden;
     opacity: 0;
+    transition: all 0.3s;
 }
 
-.collapsible--expanded .chevron {
+.collapsible--expanded .collapsible__chevron {
     transform: rotate(0);
 }
 
 .collapsible--expanded .collapsible__content {
-    max-height: 100vh;
+    max-height: 100%;
     opacity: 1;
 }
 
@@ -699,6 +712,7 @@ collapsible--expanded
         font-size: 1.6rem;
         min-height: 100%;
         opacity: 1;
+        max-height: 100%;
     }
 
     .nav__item {
@@ -740,8 +754,9 @@ collapsible--expanded
 }
 
 .block-domain__prices {
+    color: var(--colour-headings);
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 6rem 6rem;
     font-size: 2rem;
     font-weight: 600;
@@ -814,4 +829,86 @@ collapsible--expanded
         width: auto;
         max-width: 700px;
     }
+}
+
+/* Footer */
+.footer {
+    background: #232323;
+}
+
+.footer a {
+    color: #777;
+    transition: color .3s;
+}
+
+.footer a:hover {
+    color: rgb(255, 255, 255);
+}
+
+.footer__section {
+    padding: 2rem;
+    border-bottom: 1px solid #393939;
+}
+
+.footer__section .list {
+    margin: 0;
+}
+
+.footer__heading {
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.footer__brand {
+    margin-top: 5rem;
+    text-align: center;
+}
+
+.footer__brand img {
+    width: 100%;
+    max-width: 230px;
+}
+
+.footer__copyright {
+    font-size: 2.1rem;
+    color: white;
+    opacity: 0.3;
+}
+
+@media screen and (min-width: 768px) {
+    .footer__sections {
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    }
+
+    .footer .collapsible__chevron {
+        display: none;
+    }
+
+    .footer .collapsible__content {
+        opacity: 1;
+        max-height: 100%;
+    }
+
+    .footer__brand {
+        order: -1;
+        margin-top: 1rem;
+    }
+
+    .footer__copyright {
+        font-size: 1.5rem;
+    }
+
+    .footer__section {
+        border: 0;
+    }
+
+    .footer__heading {
+        font-size: 1.6rem;
+    }
+}
+
+/* Sign-up Callout */
+
+.callout-signup {
+    transform: translateY(5rem);
 }
